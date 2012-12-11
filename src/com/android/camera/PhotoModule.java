@@ -724,6 +724,12 @@ public class PhotoModule
     public void startFaceDetection() {
         if (!ApiHelper.HAS_FACE_DETECTION) return;
         if (mFaceDetectionStarted) return;
+
+        if (Util.noFaceDetect()) {
+            Log.i(TAG, "Face detection disabled");
+            return;
+        }
+
         if (mParameters.getMaxNumDetectedFaces() > 0) {
             mFaceDetectionStarted = true;
             mFaceView.clear();

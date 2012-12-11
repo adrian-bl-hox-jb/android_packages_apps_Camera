@@ -133,6 +133,9 @@ public class Util {
     private static float sPixelDensity = 1;
     private static ImageFileNamer sImageFileNamer;
 
+    private static boolean sNoFaceDetect;
+    private static boolean sHtcCompat;
+
     private Util() {
     }
 
@@ -144,7 +147,18 @@ public class Util {
         sPixelDensity = metrics.density;
         sImageFileNamer = new ImageFileNamer(
                 context.getString(R.string.image_file_name_format));
+        sNoFaceDetect = context.getResources().getBoolean(R.bool.config_noFaceDetect);
+        sHtcCompat = context.getResources().getBoolean(R.bool.config_htcCompat);
     }
+
+
+    public static boolean noFaceDetect() {
+        return sNoFaceDetect;
+    }
+
+    public static boolean htcCompat() {
+        return sHtcCompat;
+     }
 
     public static int dpToPixel(int dp) {
         return Math.round(sPixelDensity * dp);
